@@ -1,6 +1,6 @@
 ---
 title:  "Setup Browser Quest on a Server"
-date:   2015-02-27 23:22:59
+date:   2015-02-29 23:22:59
 categories: BrowserQuest 
 ---
 ## Initial Server Environment Setup
@@ -8,6 +8,7 @@ categories: BrowserQuest
 ### Create a new droplet from digitalocean with Ubuntu 14.04 x64 OS.
 
   + copy over .bashrc file to import all the preferences
+
 ### Setup Apache and PHP
   + `apt-get update`
   + `apt-get install apache`
@@ -24,7 +25,8 @@ categories: BrowserQuest
 
      Add 'ServerName localhost' 
   + `sudo service apache2 restart`
-### install BrowserQuest
+
+### Install BrowserQuest
   + `apt-get install git`
   + `git clone https://github.com/mozilla/BrowserQuest`
   + `pat-get npm`
@@ -69,7 +71,8 @@ cd ~
 
 ### Server Start
 missing server config file editing info
-node server/js/main.js
+
+`node server/js/main.js`
 
 ### Client Start
   + `npm install -g http-server`
