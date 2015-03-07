@@ -24,7 +24,7 @@ Example: `git clone https://github.com/maoning/BQ.git`
     at `<YourRepoName>/tools/maps/tmx`
   + You can modify existing layers or add new layers, the interface is similar to Photoshop
   + After you are satisfied with your change, save it
-  + Time to export map file to the readable format for server and client
+  + Export map file to the readable format for server and client
 
       May need to install following things:
 
@@ -50,7 +50,7 @@ cd toos/maps
 
     `git add --all`
 
-    `git commit -am "message for the changes`
+    `git commit -am "message for the changes"`
 
     `git push`
 
