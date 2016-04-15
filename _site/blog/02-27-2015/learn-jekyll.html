@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>neomorning</title>
-  <meta name="description" content="Code monkey, soldering fume maker, fantasy/scifi addict, whah?  A blog for like-minded people, and a notepad for myself. Have fun...
-">
+  <title>Notes for Creating Pages Using jekyll</title>
+  <meta name="description" content="Servejekyll serve">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/">
+  <link rel="canonical" href="http://yourdomain.com/blog/02-27-2015/learn-jekyll.html">
   <link rel="alternate" type="application/rss+xml" title="neomorning" href="http://yourdomain.com/feed.xml" />
 </head>
 
@@ -55,53 +54,20 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <h3 id="serve">Serve</h3>
+<p><code>jekyll serve</code></p>
 
-  <h1 class="page-heading">Posts</h1>
+<h3 id="hightlighting">Hightlighting</h3>
+<p>Short Name for code highlighting using Pygments <a href="http://pygments.org/docs/lexers/">lookup</a></p>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Feb 10, 2016</span>
+<p>Extra Args for Highlighting: <code>linenos</code> =&gt; line numbers</p>
 
-        <h2>
-          <a class="post-link" href="/blog/02-10-2016/Paint-My-Pulse.html">Paint My Pulse</a>
-          
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 1, 2015</span>
+<h3 id="build">Build</h3>
+<p>Set default source and destination dirs inside <code>_config.yml</code></p>
 
-        <h2>
-          <a class="post-link" href="/blog/03-01-2015/BrowserQuest-Setup.html">Setup Browser Quest on a Server</a>
-          
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 1, 2015</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>jekyll build --source &lt;<span class="nb">source</span>&gt; --destination &lt;destination&gt;
+<span class="c"># =&gt; The &lt;source&gt; folder will be generated into &lt;destination&gt;</span></code></pre></figure>
 
-        <h2>
-          <a class="post-link" href="/blog/03-01-2015/BrowserQuest-Dev-Environment-Setup.html">BrowserQuest Dev Environment Setup</a>
-          
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Feb 27, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/blog/02-27-2015/learn-jekyll.html">Notes for Creating Pages Using jekyll</a>
-          
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
 
       </div>
     </div>

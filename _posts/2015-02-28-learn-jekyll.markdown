@@ -8,6 +8,7 @@ categories: jekyll
 
 ### Hightlighting
 Short Name for code highlighting using Pygments [lookup][Pygments]
+
 Extra Args for Highlighting: `linenos` => line numbers
 
 ### Build

@@ -29,13 +29,12 @@ categories: BrowserQuest
 ### Install BrowserQuest
   + `apt-get install git`
   + `git clone https://github.com/mozilla/BrowserQuest`
-  + `pat-get npm`
+  + `apt-get npm`
   + `npm install underscore log bison websocket`
   + Had trouble to find source to install websocket-server, 
     download the folder from a web link instead
     
-    `wget -r --no-parent http://reisyukaku.org/games/browserquest/node_modules/websocket-serv
-er/`
+    `wget -r --no-parent http://reisyukaku.org/games/browserquest/node_modules/websocket-server/`
 
   + `npm install reisyukaku.org/games/browserquest/node_modules/websocket-server/`
   + `npm config set registry http://registry.npmjs.org/`

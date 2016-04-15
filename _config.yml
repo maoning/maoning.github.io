@@ -2,7 +2,7 @@
 title: neomorning
 description: > # this means to ignore newlines until "baseurl:"
   Code monkey, soldering fume maker, fantasy/scifi addict, whah? 
-  A blog for like-minded people, and a note pad
+  A blog for like-minded people, and a notepad
   for myself. Have fun...
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
@@ -17,8 +17,8 @@ markdown: kramdown
 permalink: /blog/:month-:day-:year/:title.html
 
 # Number of Posts Displayed per Page
-paginate: 10
-paginate_path: "/blog/page:num/"
+#paginate: 10
+#paginate_path: "/blog/page:num/"
 
 # default values
 defaults:

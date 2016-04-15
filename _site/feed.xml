@@ -2,13 +2,283 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>neomorning</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    <description>Code monkey, soldering fume maker, fantasy/scifi addict, whah?  A blog for like-minded people, and a notepad for myself. Have fun...
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 28 Feb 2015 00:20:34 -0500</pubDate>
-    <lastBuildDate>Sat, 28 Feb 2015 00:20:34 -0500</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Mon, 22 Feb 2016 16:42:13 -0500</pubDate>
+    <lastBuildDate>Mon, 22 Feb 2016 16:42:13 -0500</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Paint My Pulse</title>
+        <description>&lt;h1 id=&quot;project-summary&quot;&gt;Project Summary&lt;/h1&gt;
+&lt;p&gt;This post is about how to augment reality with your pulse readings in realtime.&lt;/p&gt;
+
+&lt;h1 id=&quot;supply-list&quot;&gt;Supply List&lt;/h1&gt;
+
+&lt;h2 id=&quot;light-painting-device&quot;&gt;Light Painting Device&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;S.W.I.M. Stick&lt;/li&gt;
+  &lt;li&gt;7805&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;signal-processing-circuit&quot;&gt;Signal Processing Circuit&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Caps&lt;/li&gt;
+  &lt;li&gt;Resistors&lt;/li&gt;
+  &lt;li&gt;LM324&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;pulse-sensor-details-herehttppulsesensorcompagescode-and-guide&quot;&gt;Pulse Sensor &lt;a href=&quot;http://pulsesensor.com/pages/code-and-guide&quot;&gt;details here&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h1 id=&quot;steps&quot;&gt;Steps&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Construct Signal Processing Circuit&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Interface with Pulse Sensor&lt;/p&gt;
+
+    &lt;p&gt;Resources:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Pulse Sensor Sample Code on &lt;a href=&quot;https://github.com/WorldFamousElectronics/PulseSensor_Amped_Arduino&quot;&gt;git&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Wed, 10 Feb 2016 14:29:59 -0500</pubDate>
+        <link>http://yourdomain.com/blog/02-10-2016/Paint-My-Pulse.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/blog/02-10-2016/Paint-My-Pulse.html</guid>
+        
+        
+        <category>Augmented</category>
+        
+        <category>Reality</category>
+        
+      </item>
+    
+      <item>
+        <title>Setup Browser Quest on a Server</title>
+        <description>&lt;h2 id=&quot;initial-server-environment-setup&quot;&gt;Initial Server Environment Setup&lt;/h2&gt;
+
+&lt;h3 id=&quot;create-a-new-droplet-from-digitalocean-with-ubuntu-1404-x64-os&quot;&gt;Create a new droplet from digitalocean with Ubuntu 14.04 x64 OS.&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;copy over .bashrc file to import all the preferences&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;setup-apache-and-php&quot;&gt;Setup Apache and PHP&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;apt-get update&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;apt-get install apache&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;apt-get install php5 libapache2-mod-php5 php5-mcrypt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;sudo service apache2 restart&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;vi /etc/hostname&lt;/p&gt;
+
+    &lt;p&gt;add following inside the file&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;127.0.0.1 localhost
+127.0.1.1 &amp;lt;name&amp;gt;
+  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;vi /etc/apache2/apache2.conf&lt;/p&gt;
+
+    &lt;p&gt;Add ‘ServerName localhost’&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;sudo service apache2 restart&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;install-browserquest&quot;&gt;Install BrowserQuest&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;apt-get install git&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;git clone https://github.com/mozilla/BrowserQuest&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;apt-get npm&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;npm install underscore log bison websocket&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Had trouble to find source to install websocket-server, 
+download the folder from a web link instead&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;wget -r --no-parent http://reisyukaku.org/games/browserquest/node_modules/websocket-server/&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;npm install reisyukaku.org/games/browserquest/node_modules/websocket-server/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;npm config set registry http://registry.npmjs.org/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;npm install sanitizer memcache&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add to package.json&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;  &lt;span class=&quot;err&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;repository&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;git&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/maoning/BrowserQuest&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and changed all &amp;gt;0 to &amp;gt;0.0.0&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;installed nodejs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;NODE_VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;0.6.8&amp;#39;&lt;/span&gt;
+wget http://nodejs.org/dist/node-v&lt;span class=&quot;nv&quot;&gt;$NODE_VERSION&lt;/span&gt;.tar.gz
+tar xvfz node-v&lt;span class=&quot;nv&quot;&gt;$NODE_VERSION&lt;/span&gt;.tar.gz
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;node-v&lt;span class=&quot;nv&quot;&gt;$NODE_VERSION&lt;/span&gt;
+./configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/local
+make install
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add node to path
+   (see http://increaseyourgeek.wordpress.com/2010/08/18/install-node-js-without-using-sudo/)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;   &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/local/bin:&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;export PATH=~/local/bin:${PATH}&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;server-start&quot;&gt;Server Start&lt;/h3&gt;
+&lt;p&gt;missing server config file editing info&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;node server/js/main.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;client-start&quot;&gt;Client Start&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;npm install -g http-server&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;for client config file, replace everything with&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;ip addr of server&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;server&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;listening&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8000&amp;gt;,&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;quot;dispatcher&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;build client in bin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;chmod +x build.sh
+./build.sh&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;start client&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;http-server -a &amp;lt;ip address of server&amp;gt; -p &amp;lt;client port num that is diff from server&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;trouble-shooting&quot;&gt;Trouble Shooting&lt;/h3&gt;
+&lt;p&gt;Sometimes the BrowserQuest page freezes at “connecting to server” page, it is due to 
+the port you choose to use are already in used by some earlier straying processes.
+If you check the output of starting the server, you would see:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Fri Feb &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt; 22:16:17 GMT-0500 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;EST&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; INFO Starting BrowserQuest game server...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Fri Feb &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt; 22:16:17 GMT-0500 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;EST&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; INFO world1 created &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;capacity: &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; players&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Fri Feb &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt; 22:16:17 GMT-0500 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;EST&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; INFO world2 created &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;capacity: &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; players&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Fri Feb &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt; 22:16:17 GMT-0500 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;EST&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; INFO world3 created &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;capacity: &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; players&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Fri Feb &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt; 22:16:17 GMT-0500 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;EST&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; INFO world4 created &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;capacity: &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; players&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Fri Feb &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt; 22:16:17 GMT-0500 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;EST&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; INFO world5 created &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;capacity: &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; players&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Fri Feb &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt; 22:16:17 GMT-0500 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;EST&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; ERROR uncaughtException: Error: listen EADDRINUSE&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;One thing you can do is to clear the port and restart server and client again.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;fuser -k &amp;lt;port num&amp;gt;/tcp
+eg. fuser -k 7000/tcp&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Sun, 01 Mar 2015 23:22:59 -0500</pubDate>
+        <link>http://yourdomain.com/blog/03-01-2015/BrowserQuest-Setup.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/blog/03-01-2015/BrowserQuest-Setup.html</guid>
+        
+        
+        <category>BrowserQuest</category>
+        
+      </item>
+    
+      <item>
+        <title>BrowserQuest Dev Environment Setup</title>
+        <description>&lt;h2 id=&quot;browserquest-dev-environment-setup&quot;&gt;BrowserQuest Dev Environment Setup&lt;/h2&gt;
+
+&lt;h3 id=&quot;make-a-private-fork-of-official-source-code&quot;&gt;Make a “Private Fork” of Official Source Code&lt;/h3&gt;
+&lt;p&gt;If you want to make a private repo off the official copy on git,
+you can’t directly fork the mozilla git repo. Steps are detailed &lt;a href=&quot;http://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;make-a-local-clone&quot;&gt;Make a Local Clone&lt;/h3&gt;
+
+&lt;p&gt;cd to a directory where you want to put your copy at&lt;/p&gt;
+
+&lt;p&gt;run &lt;code&gt;git clone&lt;/code&gt; on the repo you just created&lt;/p&gt;
+
+&lt;p&gt;Example: &lt;code&gt;git clone https://github.com/maoning/BQ.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;change-browserquest-map-config&quot;&gt;Change BrowserQuest Map Config&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download &lt;a href=&quot;http://www.mapeditor.org&quot;&gt;Tiled Map Editor&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Open the Tiled Editor and load the map file from your local repo
+at &lt;code&gt;&amp;lt;YourRepoName&amp;gt;/tools/maps/tmx&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;You can modify existing layers or add new layers, the interface is similar to Photoshop&lt;/li&gt;
+  &lt;li&gt;After you are satisfied with your change, save it&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Export map file to the readable format for server and client&lt;/p&gt;
+
+    &lt;p&gt;May need to install following things:&lt;/p&gt;
+
+    &lt;p&gt;node modules like underscore, log, bison … see previous post.&lt;/p&gt;
+
+    &lt;p&gt;python and nodejs&lt;/p&gt;
+
+    &lt;p&gt;pip&lt;/p&gt;
+
+    &lt;p&gt;lxml: &lt;code&gt;pip install lxml&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;Run following cmds to export maps:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;toos/maps
+./export.py client
+./export.py server 
+      &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Push it back to the remote repo&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;cd to your repo&#39;s top dir&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;git add --all&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;git commit -am &quot;message for the changes&quot;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;git push&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sync/Update the local repo on server&lt;/p&gt;
+
+    &lt;p&gt;Log into the server local repo, and do a &lt;code&gt;git pull&lt;/code&gt; to get the latest change&lt;/p&gt;
+
+    &lt;p&gt;Restart server and client again&lt;/p&gt;
+
+    &lt;p&gt;Now you should be able to see your changes right away&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 01 Mar 2015 09:58:00 -0500</pubDate>
+        <link>http://yourdomain.com/blog/03-01-2015/BrowserQuest-Dev-Environment-Setup.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/blog/03-01-2015/BrowserQuest-Dev-Environment-Setup.html</guid>
+        
+        
+        <category>BrowserQuest</category>
+        
+      </item>
     
       <item>
         <title>Notes for Creating Pages Using jekyll</title>
@@ -16,50 +286,23 @@
 &lt;p&gt;&lt;code&gt;jekyll serve&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;hightlighting&quot;&gt;Hightlighting&lt;/h3&gt;
-&lt;p&gt;Short Name for code highlighting using Pygments &lt;a href=&quot;http://pygments.org/docs/lexers/&quot;&gt;lookup&lt;/a&gt;
-Extra Args for Highlighting: &lt;code&gt;linenos&lt;/code&gt; =&amp;gt; line numbers&lt;/p&gt;
+&lt;p&gt;Short Name for code highlighting using Pygments &lt;a href=&quot;http://pygments.org/docs/lexers/&quot;&gt;lookup&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Extra Args for Highlighting: &lt;code&gt;linenos&lt;/code&gt; =&amp;gt; line numbers&lt;/p&gt;
 
 &lt;h3 id=&quot;build&quot;&gt;Build&lt;/h3&gt;
 &lt;p&gt;Set default source and destination dirs inside &lt;code&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll build --source &amp;lt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;&amp;gt; --destination &amp;lt;destination&amp;gt;
-&lt;span class=&quot;c&quot;&gt;# =&amp;gt; The &amp;lt;source&amp;gt; folder will be generated into &amp;lt;destination&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll build --source &amp;lt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;&amp;gt; --destination &amp;lt;destination&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# =&amp;gt; The &amp;lt;source&amp;gt; folder will be generated into &amp;lt;destination&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Fri, 27 Feb 2015 18:26:59 -0500</pubDate>
-        <link>http://yourdomain.com/02-27-2015/learn-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/02-27-2015/learn-jekyll.html</guid>
+        <link>http://yourdomain.com/blog/02-27-2015/learn-jekyll.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/blog/02-27-2015/learn-jekyll.html</guid>
         
         
         <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll! LOL ~~~~</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-antlr-ruby&quot; data-lang=&quot;antlr-ruby&quot;&gt;&lt;span class=&quot;nl&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;print_hi(name)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;quot;Hi,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;print_hi(&amp;#39;Tom&amp;#39;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;#=&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;prints&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;Hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;Tom&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;STDOUT.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 27 Feb 2015 18:14:59 -0500</pubDate>
-        <link>http://yourdomain.com/02-27-2015/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/02-27-2015/welcome-to-jekyll.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
         
       </item>
     
