@@ -6,9 +6,37 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 15 Apr 2016 18:04:10 +0000</pubDate>
-    <lastBuildDate>Fri, 15 Apr 2016 18:04:10 +0000</lastBuildDate>
+    <pubDate>Sat, 16 Apr 2016 00:52:28 +0000</pubDate>
+    <lastBuildDate>Sat, 16 Apr 2016 00:52:28 +0000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Real-time Signal Processing with Arduino</title>
+        <description>&lt;p&gt;The objective of this exercise is to reproduce “Sitting Wave” using an Arduino. The audio signal from a microphone connected to the Arduino is modulated with a signal with a known frequency to bring the audio signal to base band. A low pass filter is applied to the result. Then the audio signal is output to SWIM stick to illustrate the phenomenon of the Sitting Wave with the use of a long exposure photograph.&lt;/p&gt;
+
+&lt;h3 id=&quot;background-knowledge&quot;&gt;Background Knowledge&lt;/h3&gt;
+&lt;p&gt;Nyquist Theorem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;We can only accurately measure frequencies equal or less than half of the sampling rate.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;!-- Code example goes here --&gt;
+
+&lt;!-- Questions
+1. Inside the same app, could multiple instance of tasks exist?
+--&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://learn.adafruit.com/fft-fun-with-fourier-transforms?view=all&quot;&gt;You can find the awesome Adafruit tutorial here.&lt;/a&gt;
+&lt;a href=&quot;https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino?view=all&quot;&gt;Documentation on Wave Shield from Adafruit.&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+        <link>/articles/2016-04/FFT-with-Arduino</link>
+        <guid isPermaLink="true">/articles/2016-04/FFT-with-Arduino</guid>
+        
+        
+        <category>Arduino</category>
+        
+      </item>
     
       <item>
         <title>Android Task and Activity Management</title>
