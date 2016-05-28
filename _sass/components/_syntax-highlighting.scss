@@ -7,15 +7,8 @@ pre, code {
   font-family: $font-family-monospace;
   color: #525252;
   font-size: 0.9em;
-  background-color: #f8f8f8;
+  background-color: #DDEEFE;
   font-size: ($font-size-base - 2);
-}
-code {
-  color: #e96900;
-  padding: 3px 5px;
-  margin: 0 2px;
-  border-radius: 2px;
-  white-space: nowrap;
 }
 pre { // only apply for code blocks
   overflow: auto;
@@ -28,6 +21,12 @@ pre { // only apply for code blocks
   border-radius: 0;
   font-weight: normal;
 }
+code {
+  color: #e96900;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
 pre code {
   background: transparent;
   white-space: pre;

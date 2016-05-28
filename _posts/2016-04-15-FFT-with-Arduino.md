@@ -13,7 +13,7 @@ Nyquist Theorem:
 
     We can only accurately measure frequencies equal or less than half of the sampling rate.
 
-
+### Arduino Timer
 
 
 <!-- Code example goes here -->
@@ -24,4 +24,7 @@ Nyquist Theorem:
 -->
 
 [You can find the awesome Adafruit tutorial here.]( https://learn.adafruit.com/fft-fun-with-fourier-transforms?view=all)
+
 [Documentation on Wave Shield from Adafruit.](https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino?view=all)
+
+[Visualize Signal From Arduino](https://www.arduino.cc/en/Tutorial/Graph)

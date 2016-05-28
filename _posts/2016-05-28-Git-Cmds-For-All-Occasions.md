@@ -1,0 +1,26 @@
+---
+layout: post
+title: Most Useful Git Operations
+excerpt: "A personal git cheatsheet"
+categories: Git Terminal
+comments: true
+---
+
+I am nowhere near to be a git expert. After using ClearCase as the version control tool for over a year,
+git to me is an entirely new beast. One irritation I had using git was that it is pretty challenging
+to memorize all the commands beyond git add, commit, and push. I would usually them up again and again
+on StackOverflow, write them down on a scrap of paper and forget about them. Therefore, I am
+dedicating this post to sum up all the most used git operations for me.
+
+#### Delete All the Untracked Files and Directories
+
+```bash
+git reset --hard HEAD
+git clean -f -d
+```
+
+#### Undo git add --all
+
+```bash
+git reset
+```

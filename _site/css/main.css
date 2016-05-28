@@ -1197,15 +1197,8 @@ pre, code {
   font-family: "Ubuntu Mono", "Courier New", monospace;
   color: #525252;
   font-size: 0.9em;
-  background-color: #f8f8f8;
+  background-color: #DDEEFE;
   font-size: 13px; }
-
-code {
-  color: #e96900;
-  padding: 3px 5px;
-  margin: 0 2px;
-  border-radius: 2px;
-  white-space: nowrap; }
 
 pre {
   overflow: auto;
@@ -1217,6 +1210,11 @@ pre {
   word-wrap: break-word;
   border-radius: 0;
   font-weight: normal; }
+
+code {
+  color: #e96900;
+  border-radius: 2px;
+  white-space: nowrap; }
 
 pre code {
   background: transparent;
@@ -1464,7 +1462,7 @@ pre code {
     float: none; }
   .cover-card .author_name {
     display: block;
-    color: #F36170;
+    color: #000000;
     font-size: 1.75em;
     text-transform: lowercase; }
   .cover-card .author_job {
@@ -1475,8 +1473,8 @@ pre code {
     text-transform: uppercase;
     margin: -5px auto 10px; }
   .cover-card .author_bio {
-    font-size: 95%;
-    font-weight: 300;
+    font-size: 100%;
+    font-weight: 600;
     display: block; }
   @media only screen and (min-width: 992px) {
     .cover-card {

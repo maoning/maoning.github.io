@@ -6,9 +6,111 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 16 Apr 2016 00:52:28 +0000</pubDate>
-    <lastBuildDate>Sat, 16 Apr 2016 00:52:28 +0000</lastBuildDate>
-    <generator>Jekyll v3.0.3</generator>
+    <pubDate>Sat, 28 May 2016 21:12:43 +0000</pubDate>
+    <lastBuildDate>Sat, 28 May 2016 21:12:43 +0000</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Most Useful Mac Terminal Knowledge</title>
+        <description>&lt;h2 id=&quot;keyboard-shortcuts&quot;&gt;Keyboard Shortcuts&lt;/h2&gt;
+
+&lt;p&gt;I use mac terminal almost daily, but for some reason, these keyboard shortcuts had evaded me
+all these years…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Go to beginning of a line: &lt;code&gt;cmd + a&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Go to end of a line: &lt;code&gt;cmd + e&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Move left word-by-word: &lt;code&gt;alt + &amp;lt;-&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Move right word-by-word: &lt;code&gt;alt + -&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;terminal-style&quot;&gt;Terminal Style&lt;/h2&gt;
+
+&lt;p&gt;After using my personal terminal style for so long, it has become a necessity.
+To be filled in later…&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;color scheme + window transparency&lt;/li&gt;
+  &lt;li&gt;prompt format&lt;/li&gt;
+  &lt;li&gt;directory highlight&lt;/li&gt;
+  &lt;li&gt;fortune + cowsay&lt;/li&gt;
+  &lt;li&gt;shortcuts + aliases&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>
+        <link>/articles/2016-05/Mac-Terminal-Keyboard-Shortcuts</link>
+        <guid isPermaLink="true">/articles/2016-05/Mac-Terminal-Keyboard-Shortcuts</guid>
+        
+        
+        <category>Mac</category>
+        
+        <category>Terminal</category>
+        
+      </item>
+    
+      <item>
+        <title>Most Useful Git Operations</title>
+        <description>&lt;p&gt;I am nowhere near to be a git expert. After using ClearCase as the version control tool for over a year,
+git to me is an entirely new beast. One irritation I had using git was that it is pretty challenging
+to memorize all the commands beyond git add, commit, and push. I would usually them up again and again
+on StackOverflow, write them down on a scrap of paper and forget about them. Therefore, I am
+dedicating this post to sum up all the most used git operations for me.&lt;/p&gt;
+
+&lt;h4 id=&quot;delete-all-the-untracked-files-and-directories&quot;&gt;Delete All the Untracked Files and Directories&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git reset --hard HEAD
+git clean -f -d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;undo-git-add---all&quot;&gt;Undo git add –all&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git reset
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>
+        <link>/articles/2016-05/Git-Cmds-For-All-Occasions</link>
+        <guid isPermaLink="true">/articles/2016-05/Git-Cmds-For-All-Occasions</guid>
+        
+        
+        <category>Git</category>
+        
+        <category>Terminal</category>
+        
+      </item>
+    
+      <item>
+        <title>Neural Network with Arduino 101</title>
+        <description>&lt;h3 id=&quot;neurons-are-like-switches-that-are-connected-together&quot;&gt;Neurons Are Like Switches That Are Connected Together&lt;/h3&gt;
+&lt;p&gt;When stimulated, a neuron could be thought as switched on, and it would activate other neutrons in the network. However, unlike switches, the amount of stimulus is related how strong each connections is. The output would be based on the stimulus passing through all these varying strength connections.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-software-models-neural-network&quot;&gt;How Software Models Neural Network&lt;/h3&gt;
+&lt;p&gt;It uses Math of course! The software would receive a pattern an input, and it would adds up the input’s stimulus effect on each neutron and calculate the output, in a cascaded style.&lt;/p&gt;
+
+&lt;p&gt;The software also has to have weights to define the strength of each neuron connection. For backpropagation algorithm specifically, the network is first initialized with random weights. Then the system would start receiving training sets (patterns that we know what they mean) and compare the computed outputs with the known outputs. If any error is found, the error is then fed back through the system to adjust the weights. After thousands or more training sets, all the weights inside the system would be adjusted to an optimal value to produce the correct output. Therefore, the system learned how to properly respond to (interprete) any input patterns.&lt;/p&gt;
+
+&lt;p&gt;Example of a 3 layer feed forward network: [Input -&amp;gt; Hidden -&amp;gt; output].
+This layout can solve any truth table!!!&lt;/p&gt;
+
+&lt;!-- Code example goes here --&gt;
+
+&lt;!-- Questions
+1. Inside the same app, could multiple instance of tasks exist?
+--&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://robotics.hobbizine.com/arduinoann.html&quot;&gt;For more detailed information, see this tutorial.&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+        <link>/articles/2016-04/Artificial-Neural_Network</link>
+        <guid isPermaLink="true">/articles/2016-04/Artificial-Neural_Network</guid>
+        
+        
+        <category>Arduino</category>
+        
+        <category>Machine</category>
+        
+        <category>Learning</category>
+        
+      </item>
     
       <item>
         <title>Real-time Signal Processing with Arduino</title>
@@ -20,14 +122,19 @@
 &lt;pre&gt;&lt;code&gt;We can only accurately measure frequencies equal or less than half of the sampling rate.
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&quot;arduino-timer&quot;&gt;Arduino Timer&lt;/h3&gt;
+
 &lt;!-- Code example goes here --&gt;
 
 &lt;!-- Questions
 1. Inside the same app, could multiple instance of tasks exist?
 --&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://learn.adafruit.com/fft-fun-with-fourier-transforms?view=all&quot;&gt;You can find the awesome Adafruit tutorial here.&lt;/a&gt;
-&lt;a href=&quot;https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino?view=all&quot;&gt;Documentation on Wave Shield from Adafruit.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://learn.adafruit.com/fft-fun-with-fourier-transforms?view=all&quot;&gt;You can find the awesome Adafruit tutorial here.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino?view=all&quot;&gt;Documentation on Wave Shield from Adafruit.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.arduino.cc/en/Tutorial/Graph&quot;&gt;Visualize Signal From Arduino&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
         <link>/articles/2016-04/FFT-with-Arduino</link>

@@ -32,7 +32,7 @@
   }
   .author_name {
     display: block;
-    color: #F36170;
+    color: #000000;
     font-size: 1.75em;
     text-transform: lowercase;
   }
@@ -45,8 +45,8 @@
     margin: -5px auto 10px;
   }
   .author_bio {
-    font-size: 95%;
-    font-weight: 300;
+    font-size: 100%;
+    font-weight: 600;
     display: block;
   }
   @include media-query($medium-screen) {

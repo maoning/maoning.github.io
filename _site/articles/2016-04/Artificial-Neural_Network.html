@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Real-time Signal Processing with Arduino</title>
-  <meta name="description" content="How to use Arduino for real-time audio signal processing.">
+  <title>Neural Network with Arduino 101</title>
+  <meta name="description" content="How to do some basic machine learning with Arduino">
 
   <!-- CSS files -->
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
-  <link rel="canonical" href="/articles/2016-04/FFT-with-Arduino">
+  <link rel="canonical" href="/articles/2016-04/Artificial-Neural_Network">
   <link rel="alternate" type="application/rss+xml" title="neomorning's blog" href=" /feed.xml " />
 
   <!-- Icons -->
@@ -95,10 +95,10 @@
 
 <div id="post">
   <header class="post-header">
-    <h1 title="Real-time Signal Processing with Arduino">Real-time Signal Processing with Arduino</h1>
+    <h1 title="Neural Network with Arduino 101">Neural Network with Arduino 101</h1>
     <span class="post-meta">
       <span class="post-date">
-        15 APR 2016
+        20 APR 2016
       </span>
       •
       <span class="read-time" title="Estimated read time">
@@ -113,15 +113,16 @@
   </header>
 
   <article class="post-content">
-    <p>The objective of this exercise is to reproduce “Sitting Wave” using an Arduino. The audio signal from a microphone connected to the Arduino is modulated with a signal with a known frequency to bring the audio signal to base band. A low pass filter is applied to the result. Then the audio signal is output to SWIM stick to illustrate the phenomenon of the Sitting Wave with the use of a long exposure photograph.</p>
+    <h3 id="neurons-are-like-switches-that-are-connected-together">Neurons Are Like Switches That Are Connected Together</h3>
+<p>When stimulated, a neuron could be thought as switched on, and it would activate other neutrons in the network. However, unlike switches, the amount of stimulus is related how strong each connections is. The output would be based on the stimulus passing through all these varying strength connections.</p>
 
-<h3 id="background-knowledge">Background Knowledge</h3>
-<p>Nyquist Theorem:</p>
+<h3 id="how-software-models-neural-network">How Software Models Neural Network</h3>
+<p>It uses Math of course! The software would receive a pattern an input, and it would adds up the input’s stimulus effect on each neutron and calculate the output, in a cascaded style.</p>
 
-<pre><code>We can only accurately measure frequencies equal or less than half of the sampling rate.
-</code></pre>
+<p>The software also has to have weights to define the strength of each neuron connection. For backpropagation algorithm specifically, the network is first initialized with random weights. Then the system would start receiving training sets (patterns that we know what they mean) and compare the computed outputs with the known outputs. If any error is found, the error is then fed back through the system to adjust the weights. After thousands or more training sets, all the weights inside the system would be adjusted to an optimal value to produce the correct output. Therefore, the system learned how to properly respond to (interprete) any input patterns.</p>
 
-<h3 id="arduino-timer">Arduino Timer</h3>
+<p>Example of a 3 layer feed forward network: [Input -&gt; Hidden -&gt; output].
+This layout can solve any truth table!!!</p>
 
 <!-- Code example goes here -->
 
@@ -129,11 +130,7 @@
 1. Inside the same app, could multiple instance of tasks exist?
 -->
 
-<p><a href="https://learn.adafruit.com/fft-fun-with-fourier-transforms?view=all">You can find the awesome Adafruit tutorial here.</a></p>
-
-<p><a href="https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino?view=all">Documentation on Wave Shield from Adafruit.</a></p>
-
-<p><a href="https://www.arduino.cc/en/Tutorial/Graph">Visualize Signal From Arduino</a></p>
+<p><a href="http://robotics.hobbizine.com/arduinoann.html">For more detailed information, see this tutorial.</a></p>
 
   </article>
 </div>
@@ -142,19 +139,19 @@
   <h6>Share on: </h6>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=/articles/2016-04/FFT-with-Arduino" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=/articles/2016-04/Artificial-Neural_Network" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=/articles/2016-04/FFT-with-Arduino" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/articles/2016-04/Artificial-Neural_Network" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=/articles/2016-04/FFT-with-Arduino" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=/articles/2016-04/Artificial-Neural_Network" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
     <li>
-      <a href="https://news.ycombinator.com/submitlink?u=/articles/2016-04/FFT-with-Arduino" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+      <a href="https://news.ycombinator.com/submitlink?u=/articles/2016-04/Artificial-Neural_Network" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
     </li>
     <li>
-      <a href="https://www.reddit.com/submit?url=/articles/2016-04/FFT-with-Arduino" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+      <a href="https://www.reddit.com/submit?url=/articles/2016-04/Artificial-Neural_Network" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
     </li>
   </ul>
 </div><!-- end share-buttons -->
