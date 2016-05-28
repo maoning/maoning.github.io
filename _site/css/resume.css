@@ -1,0 +1,213 @@
+/*header {
+    height:150px;
+    border-radius: 10px;
+    background-color:#3F3F3F;
+    color:white;
+    text-align:center;
+    line-height: 35px;
+    padding-top: 20px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+body {
+   text-align: center;
+}
+
+#wrapper {
+   width:800px;
+   height: auto;
+   margin:0 auto;
+   position:relative
+}
+
+#container {
+    width:100%;
+    float:left;
+    padding:10px;
+}
+
+nav {
+    position: fixed;
+    top: 210px;
+    line-height:30px;
+    background-color:white;
+    border-style: solid;
+    border-width: 1px;
+    height:180px;
+    width:80px;
+    padding:20px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 100;
+    text-align: left;
+    font-size: 13px;
+}
+
+section {
+   width:460px;
+   height: auto;
+   float:left;
+   margin-left: 140px;
+   left: 150px;
+   padding-top: 15px;
+   padding-left:20px;
+   padding-right: 15px;
+   text-align: left;
+   border-style: solid;
+   border-width: 1px;
+   border-color: lightgray;
+}
+
+aside {
+   margin-top: 20px;
+   height:130px;
+   width:100px;
+   float:right;
+   margin-right: 20px;
+   padding:10px;
+   background-color:white;
+   border-style: solid;
+   border-width: 1px;
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+   font-weight: 100;
+   text-align: left;
+   word-wrap: break-word;
+
+}
+footer {
+    border-radius: 10px;
+    background-color:#3F3F3F;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: 'Abel', sans-serif;
+    font-weight: 500;
+}
+
+header h1 {
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+   font-weight: 100;
+   text-align: center;
+   font-size: 25px;
+}
+
+header p {
+   padding: 20px;
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+   font-weight: 100;
+   text-align: right;
+   font-size: 15px;
+}
+
+section h2 {
+   font-family: 'Open Sans', sans-serif, Helvetica, Arial;
+   font-style: normal;
+   font-weight: 400;
+   color: #0E3968;
+   src: local('Open Sans'), local('OpenSans'), url('http://themes.googleusercontent.com/static/fonts/opensans/v5/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+}
+
+section h3 {
+   color: black;
+   font-size: 15px;
+   font-weight: bold;
+   font-family: 'Abel', sans-serif;
+}
+
+section p {
+   color: black;
+   font-size: 15px;
+   font-weight: 100;
+   font-family: 'Abel', sans-serif;
+}
+
+aside p {
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+   font-weight: 100;
+   text-align: left;
+   font-size: 13px;
+}
+
+aside h2 {
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+   font-weight: 100;
+   text-align: left;
+   font-size: 13px;
+}
+
+aside a {
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+   font-weight: 100;
+   text-align: left;
+   font-size: 13px;
+}
+
+section li {
+   color: black;
+   font-size: 15px;
+   font-weight: 100;
+   font-family: 'Abel', sans-serif;
+   padding: 10px 20px;
+}*/
+
+/* unvisited link */
+/*a:link {
+    color: #000000;
+}*/
+
+/* visited link */
+/*a:visited {
+    color: #000000;
+}*/
+
+/* mouse over link */
+/*a:hover {
+    color: #003399;
+}*/
+
+
+/***********Hover Text Box*************/
+.courses {
+  color: #900;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-weight: 100;
+  font-family: 'Abel', sans-serif;}
+
+.courses:hover {
+  color: red;
+  position: relative;
+  font-size: 15px;
+}
+
+.courses[data-title]:hover:after {
+  content: attr(data-title);
+  padding: 4px 8px;
+  color: #333;
+  position: absolute;
+  left: 100px;
+  top: 100%;
+  z-index: 20;
+  width: 400px;
+  white-space: pre-wrap;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: lightgray;
+
+  color: black;
+  font-size: 15px;
+  font-weight: 100;
+  font-family: 'Abel', sans-serif;
+}
+
+.courses.notCompleted {
+   color: lightgray;
+   font-size: 15px;
+   font-weight: 100;
+   font-family: 'Abel', sans-serif;
+}
