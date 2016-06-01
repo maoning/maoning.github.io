@@ -16,6 +16,33 @@ all these years...
 - Move left word-by-word: ``` alt + <- ```
 - Move right word-by-word: ``` alt + -> ```
 
+## Useful Unix Commands
+
+1. Change ownership of a directory:
+```
+sudo chown -Rv <owner> <directory>
+```
+2. Make soft link
+```
+cd <where you want to create the link>
+ln -s <file installed location> <name of the link>
+```
+
+3. Edit $Path variable
+```
+ PATH=$PATH\:/dir/path ; export PATH
+```
+
+4. Look for the port that is in use
+```
+lsof -i :<port number>
+```
+
+5. Running a background server processing
+```
+sudo node app.js >> ~/node.log &
+```
+
 ## Terminal Style
 
 After using my personal terminal style for so long, it has become a necessity.

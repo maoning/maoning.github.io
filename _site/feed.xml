@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 28 May 2016 22:25:01 +0000</pubDate>
-    <lastBuildDate>Sat, 28 May 2016 22:25:01 +0000</lastBuildDate>
+    <pubDate>Wed, 01 Jun 2016 17:20:45 +0000</pubDate>
+    <lastBuildDate>Wed, 01 Jun 2016 17:20:45 +0000</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -24,6 +24,38 @@ all these years…&lt;/p&gt;
   &lt;li&gt;Move right word-by-word: &lt;code&gt;alt + -&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&quot;useful-unix-commands&quot;&gt;Useful Unix Commands&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Change ownership of a directory:
+&lt;code&gt;
+sudo chown -Rv &amp;lt;owner&amp;gt; &amp;lt;directory&amp;gt;
+&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make soft link
+&lt;code&gt;
+cd &amp;lt;where you want to create the link&amp;gt;
+ln -s &amp;lt;file installed location&amp;gt; &amp;lt;name of the link&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Edit $Path variable
+&lt;code&gt;
+ PATH=$PATH\:/dir/path ; export PATH
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Look for the port that is in use
+&lt;code&gt;
+lsof -i :&amp;lt;port number&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Running a background server processing
+&lt;code&gt;
+sudo node app.js &amp;gt;&amp;gt; ~/node.log &amp;amp;
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;h2 id=&quot;terminal-style&quot;&gt;Terminal Style&lt;/h2&gt;
 
 &lt;p&gt;After using my personal terminal style for so long, it has become a necessity.
@@ -38,8 +70,8 @@ To be filled in later…&lt;/p&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>
-        <link>/articles/2016-05/Mac-Terminal-Keyboard-Shortcuts</link>
-        <guid isPermaLink="true">/articles/2016-05/Mac-Terminal-Keyboard-Shortcuts</guid>
+        <link>/articles/2016-05/Mac-Terminal-Knowlege</link>
+        <guid isPermaLink="true">/articles/2016-05/Mac-Terminal-Knowlege</guid>
         
         
         <category>Mac</category>
@@ -65,6 +97,20 @@ git clean -f -d
 &lt;h4 id=&quot;undo-git-add---all&quot;&gt;Undo git add –all&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git reset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;deliver-changes-to-a-new-side-branch&quot;&gt;Deliver changes to a new side branch&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git checkout -b &amp;lt;side branch name&amp;gt;
+git add --all
+git commit -m &quot;&amp;lt;message&amp;gt;&quot;
+git push origin &amp;lt;side branch name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;deliver-a-side-branch-to-main-branch&quot;&gt;Deliver a side branch to main branch&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git checkout master
+git pull origin master
+git merge &amp;lt;side branch name&amp;gt;  // Testing: make sure everything works
+git push origin master
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>

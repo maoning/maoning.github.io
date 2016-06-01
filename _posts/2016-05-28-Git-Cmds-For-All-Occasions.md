@@ -24,3 +24,19 @@ git clean -f -d
 ```bash
 git reset
 ```
+
+#### Deliver changes to a new side branch
+```bash
+git checkout -b <side branch name>
+git add --all
+git commit -m "<message>"
+git push origin <side branch name>
+```
+
+#### Deliver a side branch to main branch
+```bash
+git checkout master
+git pull origin master
+git merge <side branch name>  // Testing: make sure everything works
+git push origin master
+```

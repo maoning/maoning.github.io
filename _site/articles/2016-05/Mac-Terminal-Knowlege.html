@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Most Useful Git Operations</title>
-  <meta name="description" content="A personal git cheatsheet">
+  <title>Most Useful Mac Terminal Knowledge</title>
+  <meta name="description" content="A personal mac terminal cheatsheet">
 
   <!-- CSS files -->
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
-  <link rel="canonical" href="/articles/2016-05/Git-Cmds-For-All-Occasions">
+  <link rel="canonical" href="/articles/2016-05/Mac-Terminal-Knowlege">
   <link rel="alternate" type="application/rss+xml" title="neomorning's blog" href=" /feed.xml " />
 
   <!-- Icons -->
@@ -100,7 +100,7 @@
 
 <div id="post">
   <header class="post-header">
-    <h1 title="Most Useful Git Operations">Most Useful Git Operations</h1>
+    <h1 title="Most Useful Mac Terminal Knowledge">Most Useful Mac Terminal Knowledge</h1>
     <span class="post-meta">
       <span class="post-date">
         28 MAY 2016
@@ -118,36 +118,62 @@
   </header>
 
   <article class="post-content">
-    <p>I am nowhere near to be a git expert. After using ClearCase as the version control tool for over a year,
-git to me is an entirely new beast. One irritation I had using git was that it is pretty challenging
-to memorize all the commands beyond git add, commit, and push. I would usually them up again and again
-on StackOverflow, write them down on a scrap of paper and forget about them. Therefore, I am
-dedicating this post to sum up all the most used git operations for me.</p>
+    <h2 id="keyboard-shortcuts">Keyboard Shortcuts</h2>
 
-<h4 id="delete-all-the-untracked-files-and-directories">Delete All the Untracked Files and Directories</h4>
+<p>I use mac terminal almost daily, but for some reason, these keyboard shortcuts had evaded me
+all these years…</p>
 
-<pre><code class="language-bash">git reset --hard HEAD
-git clean -f -d
-</code></pre>
+<ul>
+  <li>Go to beginning of a line: <code>cmd + a</code></li>
+  <li>Go to end of a line: <code>cmd + e</code></li>
+  <li>Move left word-by-word: <code>alt + &lt;-</code></li>
+  <li>Move right word-by-word: <code>alt + -&gt;</code></li>
+</ul>
 
-<h4 id="undo-git-add---all">Undo git add –all</h4>
+<h2 id="useful-unix-commands">Useful Unix Commands</h2>
 
-<pre><code class="language-bash">git reset
-</code></pre>
+<ol>
+  <li>Change ownership of a directory:
+<code>
+sudo chown -Rv &lt;owner&gt; &lt;directory&gt;
+</code></li>
+  <li>
+    <p>Make soft link
+<code>
+cd &lt;where you want to create the link&gt;
+ln -s &lt;file installed location&gt; &lt;name of the link&gt;
+</code></p>
+  </li>
+  <li>
+    <p>Edit $Path variable
+<code>
+ PATH=$PATH\:/dir/path ; export PATH
+</code></p>
+  </li>
+  <li>
+    <p>Look for the port that is in use
+<code>
+lsof -i :&lt;port number&gt;
+</code></p>
+  </li>
+  <li>Running a background server processing
+<code>
+sudo node app.js &gt;&gt; ~/node.log &amp;
+</code></li>
+</ol>
 
-<h4 id="deliver-changes-to-a-new-side-branch">Deliver changes to a new side branch</h4>
-<pre><code class="language-bash">git checkout -b &lt;side branch name&gt;
-git add --all
-git commit -m "&lt;message&gt;"
-git push origin &lt;side branch name&gt;
-</code></pre>
+<h2 id="terminal-style">Terminal Style</h2>
 
-<h4 id="deliver-a-side-branch-to-main-branch">Deliver a side branch to main branch</h4>
-<pre><code class="language-bash">git checkout master
-git pull origin master
-git merge &lt;side branch name&gt;  // Testing: make sure everything works
-git push origin master
-</code></pre>
+<p>After using my personal terminal style for so long, it has become a necessity.
+To be filled in later…</p>
+
+<ol>
+  <li>color scheme + window transparency</li>
+  <li>prompt format</li>
+  <li>directory highlight</li>
+  <li>fortune + cowsay</li>
+  <li>shortcuts + aliases</li>
+</ol>
 
   </article>
 </div>
@@ -156,19 +182,19 @@ git push origin master
   <h6>Share on: </h6>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=/articles/2016-05/Git-Cmds-For-All-Occasions" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=/articles/2016-05/Mac-Terminal-Knowlege" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=/articles/2016-05/Git-Cmds-For-All-Occasions" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/articles/2016-05/Mac-Terminal-Knowlege" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=/articles/2016-05/Git-Cmds-For-All-Occasions" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=/articles/2016-05/Mac-Terminal-Knowlege" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
     <li>
-      <a href="https://news.ycombinator.com/submitlink?u=/articles/2016-05/Git-Cmds-For-All-Occasions" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+      <a href="https://news.ycombinator.com/submitlink?u=/articles/2016-05/Mac-Terminal-Knowlege" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
     </li>
     <li>
-      <a href="https://www.reddit.com/submit?url=/articles/2016-05/Git-Cmds-For-All-Occasions" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+      <a href="https://www.reddit.com/submit?url=/articles/2016-05/Mac-Terminal-Knowlege" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
     </li>
   </ul>
 </div><!-- end share-buttons -->
