@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kickstarter Project Reward Watcher
-excerpt: "Watching Kickstarter Reward Tile's Availability, and Push Notifications to iPhone"
+excerpt: "Watching Kickstarter Reward Tile's Availability, and Sending Push Notifications to iPhone"
 categories: Ruby, Pushover, crontab
 comments: true
 ---
