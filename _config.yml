@@ -8,7 +8,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Code monkey, soldering fume maker, fantasy/scifi addict, whah?
   A blog for like-minded people, and a notepad
   for myself. Have fun...
-url:         # the base hostname & protocol for your site
+url: https://maoning.github.io   # the base hostname & protocol for your site
 
 #
 ###################################
