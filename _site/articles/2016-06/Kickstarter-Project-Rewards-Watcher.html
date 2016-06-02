@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Kickstarter Project Reward Watcher</title>
+  <meta name="description" content="Watching Kickstarter Reward Tile's Availability, and Push Notifications to iPhone">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <link rel="canonical" href="/articles/2016-06/Kickstarter-Project-Rewards-Watcher">
+  <link rel="alternate" type="application/rss+xml" title="neomorning's blog" href=" /feed.xml " />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-bottom">
+  
+  <img src="/img/avatar.jpg" alt="" class="avatar">
+  
+  <a href="/" class="author_name">neomorning</a>
+  <span class="author_job">Developer</span>
+  <span class="author_bio mbm">Code monkey, fantasy/scifi/coffee addict, soldering fume maker, whah? A blog for like-minded people, and a notepad for myself. Have fun...</span>
+  <nav class="nav">
+    <ul class="nav-list">
+       
+      <li class="nav-item">
+        <a href="/archive/">Archive</a>
+        <span>/</span>
+      </li>
+          
+      <li class="nav-item">
+        <a href="/categories/">Categories</a>
+        <span>/</span>
+      </li>
+            
+      <li class="nav-item">
+        <a href="/experiences/">Experiences</a>
+        <span>/</span>
+      </li>
+        
+      <li class="nav-item">
+        <a href="/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <div class="social-links">
+  <ul>
+    
+    <li><a href="http://twitter.com/annienmao" class="social-link-item" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/maoning" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m8">
+      <div class="post-listing">
+        <div class="back-home">
+  <a href="/">< back Home.</a>
+</div>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Kickstarter Project Reward Watcher">Kickstarter Project Reward Watcher</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        1 JUN 2016
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>As a regular Kickstarter project backer, it is very frustrating for me to see most of the early bird
+reward tiles are all gone by the time I check the project. As a result, I came up with a simple Ruby
+script to watch the project I’m interested in for me, and send me a push message to my iPhone once
+the reward tile I want is available.</p>
+
+<p>This was the first time for me to write a script in Ruby, I found the language is surprisingly easy to
+pick up, and spent little time to complete the tasks I had in mind. Here is how I did it.</p>
+
+<h4 id="use-external-kickstarter-api">Use External Kickstarter API</h4>
+
+<p>The best undocumented Kickstarter library I found is <a href="https://github.com/markolson/kickscraper">Kickscraper</a>.
+It is written in Ruby, and can get info on virtually anything from Kickstarter.</p>
+
+<p>Here is the kickstarter_watcher.rb I wrote, so that I can keep an eye on the €25 early bird tile
+of <a href="https://www.kickstarter.com/projects/573665728/common-loon-a-ruler-set-that-holds-a-world-of-crea">Common Loon project</a>
+.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">require &#39;kickscraper&#39;
+require &#39;http&#39;
+
+# Part I
+Kickscraper.configure do |config|
+    # replace with your kickstarter account email
+    config.email = &#39;&lt;kickstarter email&gt;&#39;
+    # replace with your kickstarter account password
+    config.password = &#39;&lt;kickstarter password&gt;&#39;
+end
+
+c = Kickscraper.client
+# search project name containing &quot;Common Loon&quot;,
+# and return first hit
+vm = c.search_projects(&#39;Common Loon&#39;).first
+# I cheated a bit here, counted my reward tile on the project page
+# it is the 8th reward tile
+reward = vm.rewards[8];
+
+# USEFUL PROJECT RELATED INFO I USED FOR DEBUGGING PURPOSES
+# print &quot;==========================================================================================\n&quot;
+# print &quot;Project Name: #{vm.name}\n&quot;
+# print &quot;==========================================================================================\n&quot;
+# print &quot;Reward Description:\n #{reward.description}\n&quot;
+# print &quot;==========================================================================================\n&quot;
+# print &quot;Backers Count: #{reward.backers_count}\n&quot;
+# print &quot;Reward Limit: #{reward.limit}\n&quot;
+
+# output time stamp to log file, so that I could make sure the script actually runs
+time1 = Time.new
+puts &quot;Current Time : &quot; + time1.inspect + &quot;\n\n&quot;
+
+# Part II
+# Check if number of backers if below reward limit, if it is true,
+# a pushover notification will be sent to my iPhone.  
+if reward.backers_count &lt; reward.limit
+    HTTP.post(&#39;https://api.pushover.net/1/messages.json&#39;, :body =&gt;
+                &quot;token=&lt;pushover app token&gt;&amp;&quot;\
+                &quot;user=&lt;user id&gt;&amp;&quot;\
+                &quot;message=#{vm.name}\nurls: #{vm.urls.web.project}&amp;&quot;\
+                &quot;title=Cheaper Reward Tile Available!!!&quot;
+                )
+end</code></pre></figure>
+
+<p>Part I. of the code uses the Kickscraper to get reward tile info for Common Loon project for me. In order to use the API,
+I had to enter my Kickstarter credentials to construct the client.</p>
+
+<h4 id="use-pushover-to-send-notifications-to-iphone">Use Pushover to Send Notifications to iPhone</h4>
+<p>Long time ago, I came across <a href="https://pushover.net">Pushover</a> as a notification service triggered by simple POST API.
+Although I remember I purchased the one-time charge service, I never had real use for it until now.</p>
+
+<p>I think I have the most basic plan, which gives me the ability to send 7500 messages per month for
+free via their API calls. In order to send a verified message to my device, I specified following fields
+in my POST request’s body:</p>
+
+<ul>
+  <li>token: I have to register an application in Pushover, and uses the created applicant’s token</li>
+  <li>user: this is my user key on my dash board on Pushover</li>
+  <li>message: the content of the message I want to send</li>
+  <li>title: title of the message (optional)</li>
+  <li>priority: 1 for immediate notification. Alternatively, I can set up quiet hours and set the priority to a lower number. (optional)</li>
+  <li>device: specify which device I want to send the msg to (optional).</li>
+</ul>
+
+<p>In order to receive the message on my phone, I downloaded the Pushover app on my iPhone, logged in with my
+Pushover account and assigned a device name to my phone. When I log onto your Pushover dashboard in my browser afterwards,
+I would see my device name got listed there.</p>
+
+<p>To make the POST request in Ruby, I have downloaded Ruby’s http library, by doing <code>sudo gem install http</code></p>
+
+<h4 id="write-a-crontab-script-on-mac-to-run-the-ruby-script-every-10-min">Write a Crontab Script on Mac to Run the Ruby Script Every 10 min</h4>
+<p>Now everything is set up, I just need to run the Kickstarter watcher script regularly in the background. A simple crontab script
+on mac is sufficient for the job.</p>
+
+<pre><code class="language-bash">crontab -e # to edit the crontab file in vim
+
+# enter following to the opened up editor, press i first to get into insert mode
+*/10 * * * * /bin/bash -l -c 'ruby /Users/ning/Desktop/Ning/kickstarter/kickstarter_watcher.rb &gt;&gt; /Users/ning/Desktop/Ning/kickstarter/run.log'
+
+# then press :wq to save and quit, you should see a message "crontab: installing new crontab"
+</code></pre>
+
+<p>I set a frequency of running the script every 10 min. Interestingly, I have to keep the asterisk (*) for 10 min on Mac.
+The standard linux crontab timing format can be found <a href="http://www.unixgeeks.org/security/newbie/unix/cron-1.html">here</a>.</p>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=/articles/2016-06/Kickstarter-Project-Rewards-Watcher" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/articles/2016-06/Kickstarter-Project-Rewards-Watcher" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=/articles/2016-06/Kickstarter-Project-Rewards-Watcher" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=/articles/2016-06/Kickstarter-Project-Rewards-Watcher" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=/articles/2016-06/Kickstarter-Project-Rewards-Watcher" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+<!-- 
+
+        <footer>
+  &copy; 2016 neomorning. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+</body>
+</html>

@@ -17,7 +17,7 @@ url:         # the base hostname & protocol for your site
 #
 timezone:          Canada/Toronto
 markdown:          kramdown
-highlighter:       pygments
+highlighter:       Rouge
 excerpt_separator: <!--more-->
 permalink:         /articles/:year-:month/:title
 
