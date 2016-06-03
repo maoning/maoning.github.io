@@ -4,11 +4,92 @@
     <title>neomorning&#39;s blog</title>
     <description>Code monkey, soldering fume maker, fantasy/scifi addict, whah? A blog for like-minded people, and a notepad for myself. Have fun...
 </description>
-    <link>https://maoning.github.io/</link>
-    <atom:link href="https://maoning.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Jun 2016 07:52:57 +0000</pubDate>
-    <lastBuildDate>Thu, 02 Jun 2016 07:52:57 +0000</lastBuildDate>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 03 Jun 2016 04:29:31 +0000</pubDate>
+    <lastBuildDate>Fri, 03 Jun 2016 04:29:31 +0000</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>NodeMcu Set Up on Mac OS</title>
+        <description>&lt;h4 id=&quot;install-linux-flasher-tool&quot;&gt;Install Linux Flasher Tool&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt; pip install esptool
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/themadinventor/esptool&quot;&gt;More info&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;download-the-latest-version-of-nodemcu&quot;&gt;Download the Latest Version of NodeMcu&lt;/h4&gt;
+&lt;p&gt;Get a custom build from &lt;a href=&quot;http://nodemcu-build.com/index.php&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;install-ch340g-driver-for-flashing-the-board&quot;&gt;Install CH340G Driver for Flashing the board&lt;/h4&gt;
+&lt;p&gt;The driver can be downloaded from this &lt;a href=&quot;http://www.codenuke.net/2015/01/nodemcu-install-ch340-usb-to-serial-for-yosemite.html&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the driver is properly installed, you can connect the board to a USB port
+on mac. Then find out the serial port name by running cmd &lt;code&gt;ls -l /dev/tty.*&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The connected port showed up as /dev/tty.wchusbserial1420&lt;/p&gt;
+
+&lt;h4 id=&quot;flash-the-downloaded-nodemcu-image-to-the-board&quot;&gt;Flash the Downloaded NodeMcu Image to the Board&lt;/h4&gt;
+&lt;p&gt;Use esptool.py to flash the binary onto the board.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Command is written in this format
+esptool.py --port &amp;lt;USB SERIAL PORT NAME&amp;gt; write_flash -fm dio -fs 32m 0x00000 &amp;lt;image_name&amp;gt;.bin
+
+# For example
+esptool.py --port /dev/tty.wchusbserial1420 write_flash -fm dio -fs 32m 0x00000 nodemcu-master-7-modules-2016-06-03-01-44-33-float.bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;communicate-to-the-broad-through-serial-communication&quot;&gt;Communicate to the Broad through Serial Communication&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;screen /dev/tty.wchusbserial1420 9600
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see the NodeMcu’s lua prompt upon successful connection.
+Adafruit has a good &lt;a href=&quot;https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/using-nodemcu-lua&quot;&gt;tutorial&lt;/a&gt; for setting up the connection with
+local wifi.&lt;/p&gt;
+
+&lt;p&gt;To scan the local wifi networks:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-lua&quot;&gt;-- print ap list
+function listap(t)
+      for k,v in pairs(t) do
+        print(k..&quot; : &quot;..v)
+      end
+end
+wifi.sta.getap(listap)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To establish connection:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-lua&quot;&gt;wifi.sta.config(&quot;accesspointname&quot;,&quot;yourpassword&quot;)
+wifi.sta.connect()
+tmr.delay(1000000)   -- wait 1,000,000 us = 1 second
+print(wifi.sta.status())
+print(wifi.sta.getip())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;exit screen by typing &lt;code&gt;ctrl + a&lt;/code&gt; then &lt;code&gt;ctrl + /&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;upload-files-using-esplorer&quot;&gt;Upload Files Using ESPlorer&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/4refr0nt/ESPlorer&quot;&gt;ESPlorer&lt;/a&gt; is the first IDE listed on NodeMcu’s official &lt;a href=&quot;http://nodemcu.readthedocs.io/en/dev/en/upload/&quot;&gt;document&lt;/a&gt;. Once
+you downloaded the binary, you can start the IDE by first cd into
+the ESPlorer folder, then run &lt;code&gt;java -jar &quot;ESPlorer.jar&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h4&gt;
+&lt;p&gt;After playing around with Lua commands for 30min or so, I realized
+that before I can implement real IoT applications, I have to getting through a steep learning curve.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 Jun 2016 00:00:00 +0000</pubDate>
+        <link>/articles/2016-06/NodeMcu-Setup</link>
+        <guid isPermaLink="true">/articles/2016-06/NodeMcu-Setup</guid>
+        
+        
+        <category>Lua</category>
+        
+        <category>NodeMcu</category>
+        
+        <category>Mac</category>
+        
+      </item>
     
       <item>
         <title>Kickstarter Project Reward Watcher</title>
@@ -115,8 +196,8 @@ on mac is sufficient for the job.&lt;/p&gt;
 The standard linux crontab timing format can be found &lt;a href=&quot;http://www.unixgeeks.org/security/newbie/unix/cron-1.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
-        <link>https://maoning.github.io/articles/2016-06/Kickstarter-Project-Rewards-Watcher</link>
-        <guid isPermaLink="true">https://maoning.github.io/articles/2016-06/Kickstarter-Project-Rewards-Watcher</guid>
+        <link>/articles/2016-06/Kickstarter-Project-Rewards-Watcher</link>
+        <guid isPermaLink="true">/articles/2016-06/Kickstarter-Project-Rewards-Watcher</guid>
         
         
         <category>Ruby,</category>
@@ -187,8 +268,8 @@ To be filled in later…&lt;/p&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>
-        <link>https://maoning.github.io/articles/2016-05/Mac-Terminal-Knowlege</link>
-        <guid isPermaLink="true">https://maoning.github.io/articles/2016-05/Mac-Terminal-Knowlege</guid>
+        <link>/articles/2016-05/Mac-Terminal-Knowlege</link>
+        <guid isPermaLink="true">/articles/2016-05/Mac-Terminal-Knowlege</guid>
         
         
         <category>Mac</category>
@@ -231,8 +312,8 @@ git push origin master
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>
-        <link>https://maoning.github.io/articles/2016-05/Git-Cmds-For-All-Occasions</link>
-        <guid isPermaLink="true">https://maoning.github.io/articles/2016-05/Git-Cmds-For-All-Occasions</guid>
+        <link>/articles/2016-05/Git-Cmds-For-All-Occasions</link>
+        <guid isPermaLink="true">/articles/2016-05/Git-Cmds-For-All-Occasions</guid>
         
         
         <category>Git</category>
@@ -263,8 +344,8 @@ This layout can solve any truth table!!!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://robotics.hobbizine.com/arduinoann.html&quot;&gt;For more detailed information, see this tutorial.&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-        <link>https://maoning.github.io/articles/2016-04/Artificial-Neural_Network</link>
-        <guid isPermaLink="true">https://maoning.github.io/articles/2016-04/Artificial-Neural_Network</guid>
+        <link>/articles/2016-04/Artificial-Neural_Network</link>
+        <guid isPermaLink="true">/articles/2016-04/Artificial-Neural_Network</guid>
         
         
         <category>Arduino</category>
@@ -300,8 +381,8 @@ This layout can solve any truth table!!!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.arduino.cc/en/Tutorial/Graph&quot;&gt;Visualize Signal From Arduino&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
-        <link>https://maoning.github.io/articles/2016-04/FFT-with-Arduino</link>
-        <guid isPermaLink="true">https://maoning.github.io/articles/2016-04/FFT-with-Arduino</guid>
+        <link>/articles/2016-04/FFT-with-Arduino</link>
+        <guid isPermaLink="true">/articles/2016-04/FFT-with-Arduino</guid>
         
         
         <category>Arduino</category>
@@ -379,8 +460,8 @@ This layout can solve any truth table!!!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://developer.android.com/guide/components/tasks-and-back-stack.html&quot;&gt;You can see the official Android reference page here.&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
-        <link>https://maoning.github.io/articles/2016-04/Android-task-and-activity-management</link>
-        <guid isPermaLink="true">https://maoning.github.io/articles/2016-04/Android-task-and-activity-management</guid>
+        <link>/articles/2016-04/Android-task-and-activity-management</link>
+        <guid isPermaLink="true">/articles/2016-04/Android-task-and-activity-management</guid>
         
         
         <category>Android</category>

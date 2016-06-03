@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>NodeMcu Set Up on Mac OS</title>
+  <meta name="description" content="How to start a project with NodeMcu in Mac Environment">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <link rel="canonical" href="/articles/2016-06/NodeMcu-Setup">
+  <link rel="alternate" type="application/rss+xml" title="neomorning's blog" href=" /feed.xml " />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-bottom">
+  
+  <img src="/img/avatar.jpg" alt="" class="avatar">
+  
+  <a href="/" class="author_name">neomorning</a>
+  <span class="author_job">Developer</span>
+  <span class="author_bio mbm">Code monkey, fantasy/scifi/coffee addict, soldering fume maker, whah? A blog for like-minded people, and a notepad for myself. Have fun...</span>
+  <nav class="nav">
+    <ul class="nav-list">
+       
+      <li class="nav-item">
+        <a href="/archive/">Archive</a>
+        <span>/</span>
+      </li>
+          
+      <li class="nav-item">
+        <a href="/categories/">Categories</a>
+        <span>/</span>
+      </li>
+            
+      <li class="nav-item">
+        <a href="/experiences/">Experiences</a>
+        <span>/</span>
+      </li>
+        
+      <li class="nav-item">
+        <a href="/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <div class="social-links">
+  <ul>
+    
+    <li><a href="http://twitter.com/annienmao" class="social-link-item" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/http://ca.linkedin.com/in/ningmao" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    <li><a href="http://github.com/maoning" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m8">
+      <div class="post-listing">
+        <div class="back-home">
+  <a href="/">< back Home.</a>
+</div>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="NodeMcu Set Up on Mac OS">NodeMcu Set Up on Mac OS</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        2 JUN 2016
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    1 min read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h4 id="install-linux-flasher-tool">Install Linux Flasher Tool</h4>
+<pre><code> pip install esptool
+</code></pre>
+<p><a href="https://github.com/themadinventor/esptool">More info</a>.</p>
+
+<h4 id="download-the-latest-version-of-nodemcu">Download the Latest Version of NodeMcu</h4>
+<p>Get a custom build from <a href="http://nodemcu-build.com/index.php">here</a></p>
+
+<h4 id="install-ch340g-driver-for-flashing-the-board">Install CH340G Driver for Flashing the board</h4>
+<p>The driver can be downloaded from this <a href="http://www.codenuke.net/2015/01/nodemcu-install-ch340-usb-to-serial-for-yosemite.html">link</a></p>
+
+<p>Once the driver is properly installed, you can connect the board to a USB port
+on mac. Then find out the serial port name by running cmd <code>ls -l /dev/tty.*</code></p>
+
+<p>The connected port showed up as /dev/tty.wchusbserial1420</p>
+
+<h4 id="flash-the-downloaded-nodemcu-image-to-the-board">Flash the Downloaded NodeMcu Image to the Board</h4>
+<p>Use esptool.py to flash the binary onto the board.</p>
+
+<pre><code># Command is written in this format
+esptool.py --port &lt;USB SERIAL PORT NAME&gt; write_flash -fm dio -fs 32m 0x00000 &lt;image_name&gt;.bin
+
+# For example
+esptool.py --port /dev/tty.wchusbserial1420 write_flash -fm dio -fs 32m 0x00000 nodemcu-master-7-modules-2016-06-03-01-44-33-float.bin
+</code></pre>
+
+<h4 id="communicate-to-the-broad-through-serial-communication">Communicate to the Broad through Serial Communication</h4>
+
+<pre><code>screen /dev/tty.wchusbserial1420 9600
+</code></pre>
+
+<p>You should see the NodeMcu’s lua prompt upon successful connection.
+Adafruit has a good <a href="https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/using-nodemcu-lua">tutorial</a> for setting up the connection with
+local wifi.</p>
+
+<p>To scan the local wifi networks:</p>
+
+<pre><code class="language-lua">-- print ap list
+function listap(t)
+      for k,v in pairs(t) do
+        print(k.." : "..v)
+      end
+end
+wifi.sta.getap(listap)
+</code></pre>
+
+<p>To establish connection:</p>
+
+<pre><code class="language-lua">wifi.sta.config("accesspointname","yourpassword")
+wifi.sta.connect()
+tmr.delay(1000000)   -- wait 1,000,000 us = 1 second
+print(wifi.sta.status())
+print(wifi.sta.getip())
+</code></pre>
+
+<p>exit screen by typing <code>ctrl + a</code> then <code>ctrl + /</code></p>
+
+<h4 id="upload-files-using-esplorer">Upload Files Using ESPlorer</h4>
+<p><a href="https://github.com/4refr0nt/ESPlorer">ESPlorer</a> is the first IDE listed on NodeMcu’s official <a href="http://nodemcu.readthedocs.io/en/dev/en/upload/">document</a>. Once
+you downloaded the binary, you can start the IDE by first cd into
+the ESPlorer folder, then run <code>java -jar "ESPlorer.jar"</code></p>
+
+<h4 id="conclusion">Conclusion</h4>
+<p>After playing around with Lua commands for 30min or so, I realized
+that before I can implement real IoT applications, I have to getting through a steep learning curve.</p>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=/articles/2016-06/NodeMcu-Setup" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/articles/2016-06/NodeMcu-Setup" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=/articles/2016-06/NodeMcu-Setup" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url=/articles/2016-06/NodeMcu-Setup&title=NodeMcu Set Up on Mac OS&summary=How to start a project with NodeMcu in Mac Environment" class="linkedin btn" title="Share on LinkedIn"><i class="fa fa-LinkedIn"></i><span> LinkedIn</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+<!-- 
+
+        <footer>
+  &copy; 2016 neomorning. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+</body>
+</html>
