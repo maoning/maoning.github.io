@@ -1,0 +1,20 @@
+---
+layout: page
+title:  Gallery
+permalink: /gallery/
+images:
+  - image_path: /gallery/pot.gif
+    title: Brewing Pot
+    date: 2016-06-26
+    description: My first attempt at making animated pixel art (made in Hexels 2).
+---
+
+<ul class="photo-gallery">
+  {% for image in page.images %}
+    <li>
+        <p>{{image.title}}  [{{image.date}}]</p>
+        <img src="{{ image.image_path }}" alt="{{ image.title}}"/><br>
+        <p>{{image.description}}</p>
+    </li>
+  {% endfor %}
+</ul>

@@ -5,11 +5,10 @@
 #
 title:       "neomorning's blog"
 description: > # this means to ignore newlines until "baseurl:"
-  Code monkey, soldering fume maker, fantasy/scifi addict, whah?
-  A blog for like-minded people, and a notepad
-  for myself. Have fun...
+  I'm a code monkey, fantasy/scifi/coffee addict, and soldering fume maker.
+  This is a blog for like-minded people, and a notepad for myself. Have fun...
 url: https://maoning.github.io   # the base hostname & protocol for your site
-
+# url: http://localhost:4000
 #
 ###################################
 # Jekyll configuration
@@ -37,7 +36,7 @@ owner:
   name: neomorning
   avatar: avatar.jpg
   job: "Developer"
-  bio: "Code monkey, fantasy/scifi/coffee addict, soldering fume maker, whah? A blog for like-minded people, and a notepad for myself. Have fun..."
+  bio: "I'm a code monkey, fantasy/scifi/coffee addict, and soldering fume maker. This is a blog for like-minded people, and a notepad for myself. Have fun..."
   # email: zourenyuan@gmail.com
   disqus-shortname:
   twitter: annienmao #username
