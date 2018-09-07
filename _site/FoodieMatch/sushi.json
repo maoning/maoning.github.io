@@ -41,33 +41,6 @@
         "trimmed":false,
         "spriteSourceSize":{"x":0,"y":0,"w":128,"h":128},
         "sourceSize":{"w":128,"h":128}
-    },{
-        "filename":"TobikoEgg",
-        "frame":{"x":297,"y":167,"w":128,"h":128},
-        "rotated":false,
-        "trimmed":false,
-        "spriteSourceSize":{"x":0,"y":0,"w":128,"h":128},
-        "sourceSize":{"w":128,"h":128}
-    },{
-        "filename":"Crab","frame":{"x":439,"y":167,"w":128,"h":128},
-        "rotated":false,
-        "trimmed":false,
-        "spriteSourceSize":{"x":0,"y":0,"w":128,"h":128},
-        "sourceSize":{"w":128,"h":128}
-    },{
-        "filename":"Cucumber",
-        "frame":{"x":14,"y":320,"w":128,"h":128},
-        "rotated":false,
-        "trimmed":false,
-        "spriteSourceSize":{"x":0,"y":0,"w":128,"h":128},
-        "sourceSize":{"w":128,"h":128}
-    },{
-        "filename":"Unagi",
-        "frame":{"x":155,"y":320,"w":128,"h":128},
-        "rotated":false,
-        "trimmed":false,
-        "spriteSourceSize":{"x":0,"y":0,"w":128,"h":128},
-        "sourceSize":{"w":128,"h":128}
         }],
     "meta":{
         "app":"https://www.leshylabs.com/apps/sstool/",

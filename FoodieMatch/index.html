@@ -9,6 +9,16 @@
 			}
 		</style>
 		<script src="pixi.dev.js"></script>
+        <script src="scaleToWindow.js"></script>
+        <!-- Viewport meta tag is critical to have mobile browsers
+            actually report correct screen dimensions -->
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"> -->
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Phaser App">
+<meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
+
 	</head>
 	<body>
 		<script>
@@ -19,15 +29,55 @@
 			// can the player pick up a tile?
 			var canPick=true;
 			// create an new instance of a pixi stage with a grey background
-			var stage = new PIXI.Stage(0x888888);
-			// create a renderer instance width=640 height=480
-			var renderer = PIXI.autoDetectRenderer(1088,690);
-			// importing a texture atlas created with texturepacker
-			var tileAtlas = ["sushi.json"];
+			var stage = new PIXI.Container();
+            var GAME_WIDTH = 1088;
+            var GAME_HEIGHT = 690;
+
+            // render options
+            var rendererOptions = {
+              antialiasing: false,
+              transparent: false,
+              resolution: window.devicePixelRatio,
+              autoResize: true,
+            }
+
+            // Create the canvas in which the game will show, and a
+            // generic container for all the graphical objects
+            renderer = PIXI.autoDetectRenderer(GAME_WIDTH, GAME_HEIGHT,
+                                               rendererOptions);
+
+            // Put the renderer on screen in the corner
+            renderer.view.style.position = "absolute";
+            renderer.view.style.top = "0px";
+            renderer.view.style.left = "0px";
+
+			// var renderer = PIXI.autoDetectRenderer(1088,690);
+            renderer.backgroundColor = 0x888888;
+            // Size the renderer to fill the screen
+            resize();
+
+            // if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+            //     window.addEventListener("load",function() {
+            // 	// Set a timeout...
+            // 	setTimeout(function(){
+            // 		// Hide the address bar!
+            // 		window.scrollTo(0, 1);
+            // 	}, 0);
+            // });
+            //  }
+            // make the canvas fill the entire window
+            // renderer.view.style.position = "absolute";
+            // renderer.view.style.width = window.innerWidth + "px";
+            // renderer.view.style.height = window.innerHeight + "px";
+            // renderer.view.style.display = "block";
+            // scaleToWindow(renderer.view);
+
 			// create a new loader
-			var loader = new PIXI.AssetLoader(tileAtlas);
+            var loader = new PIXI.loaders.Loader();
+            loader.add('sushi', 'sushi.json');
+
 			// create an empty container
-			var gameContainer = new PIXI.DisplayObjectContainer();
+			var gameContainer = new PIXI.Container();
 
             var tileNumber = 40;
             var horizontalTileNumber = 8;
@@ -37,20 +87,33 @@
      		stage.addChild(gameContainer);
      		// add the renderer view element to the DOM
 			document.body.appendChild(renderer.view);
-			// use callback
-			loader.onComplete = onTilesLoaded
-			//begin load
-			loader.load();
+
+            loader.on('complete', onTilesLoaded);
+            loader.load();
+
+            function resize() {
+
+              // Determine which screen dimension is most constrained
+              ratio = Math.min(window.innerWidth/GAME_WIDTH,
+                               window.innerHeight/GAME_HEIGHT);
+
+              // Scale the view appropriately to fill that dimension
+              stage.scale.x = stage.scale.y = ratio;
+
+              // Update the renderer dimensions
+              renderer.resize(Math.ceil(GAME_WIDTH * ratio),
+                              Math.ceil(GAME_HEIGHT * ratio));
+            }
 
 			function onTilesLoaded(){
                 console.log("Tiles are loaded");
 				// choose 24 random tile images
 				var chosenTiles=new Array();
 				while(chosenTiles.length<tileNumber){
-					var candidate=Math.floor(Math.random()*6);
+					var candidate=Math.floor(Math.random()*9);
 					// if(chosenTiles.indexOf(candidate)==-1){
                         console.log("Candiate: " + candidate);
-                        console.log("Candiate index: " + chosenTiles.indexOf(candidate));
+                        // console.log("Candiate index: " + chosenTiles.indexOf(candidate));
 
 						chosenTiles.push(candidate,candidate)
 					// }
@@ -65,12 +128,20 @@
 					chosenTiles[from]=chosenTiles[to];
 					chosenTiles[to]=tmp;
 				}
+
+                console.log(chosenTiles);
+
 				// place down tiles
 				for(i=0;i<horizontalTileNumber;i++){
 					for(j=0;j<verticalTileNumber;j++){
 						// new sprite
-						var tile = PIXI.Sprite.fromFrame(chosenTiles[i*verticalTileNumber+j]);
+						var tile = new PIXI.Sprite.fromFrame(chosenTiles[i*verticalTileNumber+j]);
+                        // var tile = PIXI.Sprite(PIXI.loader.resources[chosenTiles[i*verticalTileNumber+j]]);
 						// buttonmode+interactive = acts like a button
+                        if (!tile) {
+                            console.log(chosenTiles[i*verticalTileNumber+j] + " is missing");
+                        }
+
 						tile.buttonMode=true;
 						tile.interactive = true;
 						// is the tile selected?
@@ -88,61 +159,61 @@
 						// add the tile
 						gameContainer.addChild(tile);
 						// mouse-touch listener
-						tile.mousedown = tile.touchstart = function(data){
-							// can I pick a tile?
-							if(canPick) {
-							     // is the tile already selected?
-								if(!this.isSelected){
-									// set the tile to selected
-									this.isSelected = true;
-									// show the tile
-				      				this.tint = 0xffffff;
-									this.alpha = 1;
-									// is it the first tile we uncover?
-									if(firstTile==null){
-										firstTile=this
-									}
-									// this is the second tile
-									else{
-										secondTile=this
-										// can't pick anymore
-										canPick=false;
-										// did we pick the same tiles?
-										if(firstTile.theVal==secondTile.theVal){
-											// wait a second then remove the tiles and make the player able to pick again
-											setTimeout(function(){
-												gameContainer.removeChild(firstTile);
-												gameContainer.removeChild(secondTile);
-												firstTile=null;
-												secondTile=null;
-												canPick=true;
-											},1000);
-										}
-										// we picked different tiles
-										else{
-											// wait a second then cover the tiles and make the player able to pick again
-								 			setTimeout(function(){
-								 				firstTile.isSelected=false
-								 				secondTile.isSelected=false
-								 				firstTile.tint = 0x000000;
-								 				secondTile.tint = 0x000000;
-								 				firstTile.alpha=0.5;
-								 				secondTile.alpha=0.5;
-								 				firstTile=null;
-												secondTile=null;
-												canPick=true
-								 			},1000);
-										}
-									}
-								}
-							}
-						}
+        				tile.mousedown = tile.touchstart = function(data){
+        					// can I pick a tile?
+        					if(canPick) {
+        					     // is the tile already selected?
+        						if(!this.isSelected){
+        							// set the tile to selected
+        							this.isSelected = true;
+        							// show the tile
+                                    this.tint= 0xffffff;
+        							this.alpha = 1;
+        							// is it the first tile we uncover?
+        							if(firstTile==null){
+        								firstTile=this
+        							}
+        							// this is the second tile
+        							else{
+        								secondTile=this
+        								// can't pick anymore
+        								canPick=false;
+        								// did we pick the same tiles?
+        								if(firstTile.theVal==secondTile.theVal){
+        									// wait a second then remove the tiles and make the player able to pick again
+        									setTimeout(function(){
+        										gameContainer.removeChild(firstTile);
+        										gameContainer.removeChild(secondTile);
+        										firstTile=null;
+        										secondTile=null;
+        										canPick=true;
+        									},1000);
+        								}
+        								// we picked different tiles
+        								else{
+        									// wait a second then cover the tiles and make the player able to pick again
+        						 			setTimeout(function(){
+        						 				firstTile.isSelected=false
+        						 				secondTile.isSelected=false
+        						 				firstTile.tint = 0x000000;
+        						 				secondTile.tint = 0x000000;
+        						 				firstTile.alpha=0.5;
+        						 				secondTile.alpha=0.5;
+        						 				firstTile=null;
+        										secondTile=null;
+        										canPick=true
+        						 			},1000);
+        								}
+        							}
+        						}
+        					}
+        				}
 					}
 				}
-				requestAnimFrame(animate);
+				requestAnimationFrame(animate);
 			}
 			function animate() {
-				requestAnimFrame(animate);
+				requestAnimationFrame(animate);
 				renderer.render(stage);
 			}
 		</script>

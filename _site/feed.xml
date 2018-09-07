@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>neomorning&#39;s blog</title>
-    <description>I&#39;m a code monkey, fantasy/scifi/coffee addict, and soldering fume maker. This is a blog for like-minded people, and a notepad for myself. Have fun...
+    <description>I&#39;m a code monkey, a fantasy/scifi/coffee addict, and a soldering fume maker. This is a blog for like-minded people, and a notepad for myself. Have fun...
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 26 Jun 2016 18:57:11 +0000</pubDate>
-    <lastBuildDate>Sun, 26 Jun 2016 18:57:11 +0000</lastBuildDate>
+    <link>https://maoning.github.io/</link>
+    <atom:link href="https://maoning.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 08 Jul 2016 05:38:28 +0000</pubDate>
+    <lastBuildDate>Fri, 08 Jul 2016 05:38:28 +0000</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -79,8 +79,8 @@ the ESPlorer folder, then run &lt;code&gt;java -jar &quot;ESPlorer.jar&quot;&lt;
 that before I can implement real IoT applications, I have to getting through a steep learning curve.&lt;/p&gt;
 </description>
         <pubDate>Thu, 02 Jun 2016 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/articles/2016-06/NodeMcu-Setup</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2016-06/NodeMcu-Setup</guid>
+        <link>https://maoning.github.io/articles/2016-06/NodeMcu-Setup</link>
+        <guid isPermaLink="true">https://maoning.github.io/articles/2016-06/NodeMcu-Setup</guid>
         
         
         <category>Lua</category>
@@ -196,8 +196,8 @@ on mac is sufficient for the job.&lt;/p&gt;
 The standard linux crontab timing format can be found &lt;a href=&quot;http://www.unixgeeks.org/security/newbie/unix/cron-1.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/articles/2016-06/Kickstarter-Project-Rewards-Watcher</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2016-06/Kickstarter-Project-Rewards-Watcher</guid>
+        <link>https://maoning.github.io/articles/2016-06/Kickstarter-Project-Rewards-Watcher</link>
+        <guid isPermaLink="true">https://maoning.github.io/articles/2016-06/Kickstarter-Project-Rewards-Watcher</guid>
         
         
         <category>Ruby</category>
@@ -268,8 +268,8 @@ To be filled in later…&lt;/p&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/articles/2016-05/Mac-Terminal-Knowlege</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2016-05/Mac-Terminal-Knowlege</guid>
+        <link>https://maoning.github.io/articles/2016-05/Mac-Terminal-Knowlege</link>
+        <guid isPermaLink="true">https://maoning.github.io/articles/2016-05/Mac-Terminal-Knowlege</guid>
         
         
         <category>Mac</category>
@@ -312,8 +312,8 @@ git push origin master
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Sat, 28 May 2016 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/articles/2016-05/Git-Cmds-For-All-Occasions</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2016-05/Git-Cmds-For-All-Occasions</guid>
+        <link>https://maoning.github.io/articles/2016-05/Git-Cmds-For-All-Occasions</link>
+        <guid isPermaLink="true">https://maoning.github.io/articles/2016-05/Git-Cmds-For-All-Occasions</guid>
         
         
         <category>Git</category>
@@ -344,8 +344,8 @@ This layout can solve any truth table!!!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://robotics.hobbizine.com/arduinoann.html&quot;&gt;For more detailed information, see this tutorial.&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/articles/2016-04/Artificial-Neural_Network</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2016-04/Artificial-Neural_Network</guid>
+        <link>https://maoning.github.io/articles/2016-04/Artificial-Neural_Network</link>
+        <guid isPermaLink="true">https://maoning.github.io/articles/2016-04/Artificial-Neural_Network</guid>
         
         
         <category>Arduino</category>
@@ -381,8 +381,8 @@ This layout can solve any truth table!!!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.arduino.cc/en/Tutorial/Graph&quot;&gt;Visualize Signal From Arduino&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/articles/2016-04/FFT-with-Arduino</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2016-04/FFT-with-Arduino</guid>
+        <link>https://maoning.github.io/articles/2016-04/FFT-with-Arduino</link>
+        <guid isPermaLink="true">https://maoning.github.io/articles/2016-04/FFT-with-Arduino</guid>
         
         
         <category>Arduino</category>
@@ -460,8 +460,8 @@ This layout can solve any truth table!!!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://developer.android.com/guide/components/tasks-and-back-stack.html&quot;&gt;You can see the official Android reference page here.&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/articles/2016-04/Android-task-and-activity-management</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2016-04/Android-task-and-activity-management</guid>
+        <link>https://maoning.github.io/articles/2016-04/Android-task-and-activity-management</link>
+        <guid isPermaLink="true">https://maoning.github.io/articles/2016-04/Android-task-and-activity-management</guid>
         
         
         <category>Android</category>

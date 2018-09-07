@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Foodie Match</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+		<script src="pixi.dev.js"></script>
+        <script src="scaleToWindow.js"></script>
+        <!-- Viewport meta tag is critical to have mobile browsers
+            actually report correct screen dimensions -->
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"> -->
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="Phaser App">
+<meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
+
+	</head>
+	<body>
+		<script>
+            // TODO:
+            //[ ] No solution
+
+			// first tile picked up by the player
+			var firstTile=null;
+			// second tile picked up by the player
+			var secondTile=null;
+			// can the player pick up a tile?
+			var canPick=true;
+			// create an new instance of a pixi stage with a grey background
+			var stage = new PIXI.Container();
+            var GAME_WIDTH = 1088;
+            var GAME_HEIGHT = 690;
+
+            // render options
+            var rendererOptions = {
+              antialiasing: false,
+              transparent: false,
+              resolution: window.devicePixelRatio,
+              autoResize: true,
+            }
+
+            // Create the canvas in which the game will show, and a
+            // generic container for all the graphical objects
+            renderer = PIXI.autoDetectRenderer(GAME_WIDTH, GAME_HEIGHT,
+                                               rendererOptions);
+
+            // Put the renderer on screen in the corner
+            renderer.view.style.position = "absolute";
+            renderer.view.style.top = "0px";
+            renderer.view.style.left = "0px";
+
+			// var renderer = PIXI.autoDetectRenderer(1088,690);
+            renderer.backgroundColor = 0x888888;
+            // Size the renderer to fill the screen
+            resize();
+
+			// create a new loader
+            var loader = new PIXI.loaders.Loader();
+            loader.add('sushi', 'sushi.json');
+
+			// create an empty container
+			var gameContainer = new PIXI.Container();
+
+            // tileNumber = horizontalTileNumber * verticalTileNumber
+            var tileNumber = 40;
+            var horizontalTileNumber = 8;
+            var verticalTileNumber = 5;
+
+            // make a map for calculating solution later
+            var gameStateMap = Array(verticalTileNumber);
+
+			// add the container to the stage
+     		stage.addChild(gameContainer);
+     		// add the renderer view element to the DOM
+			document.body.appendChild(renderer.view);
+
+            loader.on('complete', onTilesLoaded);
+            loader.load();
+
+            function resize() {
+
+              // Determine which screen dimension is most constrained
+              ratio = Math.min(window.innerWidth/GAME_WIDTH,
+                               window.innerHeight/GAME_HEIGHT);
+
+              // Scale the view appropriately to fill that dimension
+              stage.scale.x = stage.scale.y = ratio;
+
+              // Update the renderer dimensions
+              renderer.resize(Math.ceil(GAME_WIDTH * ratio),
+                              Math.ceil(GAME_HEIGHT * ratio));
+            }
+
+			function onTilesLoaded(){
+                console.log("Tiles are loaded");
+				// choose 9 random tile images
+				var chosenTiles=new Array();
+				while(chosenTiles.length<tileNumber){
+					var candidate=Math.floor(Math.random()*9);
+					// if(chosenTiles.indexOf(candidate)==-1){
+                        console.log("Candiate: " + candidate);
+                        // console.log("Candiate index: " + chosenTiles.indexOf(candidate));
+
+						chosenTiles.push(candidate,candidate);
+					// }
+				}
+
+                // return;
+				// shuffle the chosen tiles
+				for(i=0;i<tileNumber;i++){
+					var from = Math.floor(Math.random()*tileNumber);
+					var to = Math.floor(Math.random()*tileNumber);
+					var tmp = chosenTiles[from];
+					chosenTiles[from]=chosenTiles[to];
+					chosenTiles[to]=tmp;
+				}
+
+				// place down tiles
+				for(i=0;i<verticalTileNumber;i++){
+                    var rowGameStateMap = new Array(horizontalTileNumber);
+
+					for(j=0;j<horizontalTileNumber;j++){
+						// new sprite
+						var tile = new PIXI.Sprite.fromFrame(chosenTiles[i*horizontalTileNumber+j]);
+						// buttonmode+interactive = acts like a button
+                        if (!tile) {
+                            console.log(chosenTiles[i*horizontalTileNumber+j] + " is missing");
+                        }
+                        rowGameStateMap[j] = 1;
+
+						tile.buttonMode=true;
+						tile.interactive = true;
+						// is the tile selected?
+						tile.isSelected=false;
+						// set a tile value
+						tile.theVal=chosenTiles[i*horizontalTileNumber+j]
+						// place the tile
+                        // TODO: change hardcoded size to image size
+						tile.position.x = 10+  j*134;
+						tile.position.y = 10+  i*134;
+
+                        tile.index = {};
+                        tile.index.x = j;
+                        tile.index.y = i;
+
+						gameContainer.addChild(tile);
+
+						// mouse-touch listener
+                        tile.mousedown = tile.touchstart = function(data) {
+                            if (canPick) {
+                                if (!this.isSelected) {
+                                    this.isSelected = true;
+                                    this.alpha=0.5;
+                                    // is it the first tile we uncover?
+        							if(firstTile==null){
+        								firstTile=this
+        							}
+
+                                    else {
+                                        secondTile = this;
+                                        canPick = false;
+                                        if (firstTile.theVal == secondTile.theVal) {
+                                            // computs if they are 3 turns away from each other
+                                            // if (doesConnect(firstTile, secondTile, chosenTiles, -1, -1)) {
+                                            if (doesConnect(firstTile.index.x + 1, firstTile.index.y + 1, secondTile.index.x + 1, secondTile.index.y + 1, -1, -1, expand(gameStateMap))) {
+                                                // wait a second then remove the tiles and make the player able to pick again
+            									setTimeout(function(){
+            										gameContainer.removeChild(firstTile);
+            										gameContainer.removeChild(secondTile);
+                                                    gameStateMap[firstTile.index.y][firstTile.index.x] = 0;
+                                                    gameStateMap[secondTile.index.y][secondTile.index.x] = 0;
+            										firstTile=null;
+            										secondTile=null;
+            										canPick=true;
+            									},500);
+                                            }
+                                            else {
+                                                // TODO: Eliminate duplicate function here
+                                                // wait a second then cover the tiles and make the player able to pick again
+            						 			setTimeout(function(){
+            						 				firstTile.isSelected=false;
+            						 				secondTile.isSelected=false;
+            						 				firstTile.alpha=1;
+            						 				secondTile.alpha=1;
+            						 				firstTile=null;
+            										secondTile=null;
+            										canPick=true
+            						 			},500);
+                                            }
+                                        }
+                                        else {
+                                            // TODO: Eliminate duplicate function here
+                                            // wait a second then cover the tiles and make the player able to pick again
+                                            setTimeout(function(){
+                                                firstTile.isSelected=false;
+                                                secondTile.isSelected=false;
+                                                firstTile.alpha=1;
+                                                secondTile.alpha=1;
+                                                firstTile=null;
+                                                secondTile=null;
+                                                canPick=true
+                                            },500);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+					}
+                    gameStateMap[i] = rowGameStateMap;
+				}
+				requestAnimationFrame(animate);
+			}
+			function animate() {
+				requestAnimationFrame(animate);
+				renderer.render(stage);
+			}
+
+            // This is the main search logic for the game
+            // if turnCount is > 2, stop searching
+            // record previous direction, so that we know if there is a turn
+            // direction: -1: default, 0: up, 1: down, 2: left, 3: right
+            function doesConnect(x1, y1, x2, y2, turnCount, direction, gameStateMapCopy) {
+                console.log("x1: " + x1 + ", y1: " + y1 + ", turnCount: " + turnCount + ", direction: " + direction);
+                if (turnCount > 2) {
+                    return false;
+                }
+                // look at the surrounding tile of tile1, see if anyone is tile 2
+                if (checkSurroundingConnect(x1, y1, x2, y2, direction, turnCount)) {
+                    return true;
+                }
+                else {
+                    // look for if any of the 0 block surrounding tile 1
+                    // down
+                    if (direction != 0 && y1 + 1 < verticalTileNumber + 2) {
+                        if (gameStateMapCopy[y1 + 1][x1] == 0) {
+                            console.log(gameStateMapCopy);
+                            if (direction != 1) {
+                                if (doesConnect(x1, y1+1, x2, y2, turnCount+1, 1, clone(gameStateMapCopy))) return true;
+                            }
+                            else {
+                                if (doesConnect(x1, y1+1, x2, y2, turnCount, 1, clone(gameStateMapCopy))) return true;
+                            }
+                            gameStateMapCopy[y1 + 1][x1] = 1;
+
+                        }
+                    }
+                    // up
+                    if (direction != 1  && y1 - 1 >= 0) {
+                        if (gameStateMapCopy[y1 - 1][x1] == 0) {
+                            console.log(gameStateMapCopy);
+                            if (direction != 0) {
+                                if (doesConnect(x1, y1-1, x2, y2, turnCount+1, 0, clone(gameStateMapCopy))) return true;
+                            }
+                            else {
+                                if (doesConnect(x1, y1-1, x2, y2, turnCount, 0, clone(gameStateMapCopy))) return true;
+                            }
+                            gameStateMapCopy[y1 - 1][x1] = 1;
+                        }
+                    }
+                    // left
+                    if (direction != 3 && x1 - 1 >= 0) {
+                        if (gameStateMapCopy[y1][x1 - 1] == 0) {
+                            console.log(gameStateMapCopy);
+                            if (direction != 2) {
+                                if (doesConnect(x1-1, y1, x2, y2, turnCount+1, 2, clone(gameStateMapCopy))) return true;
+                            }
+                            else {
+                                if (doesConnect(x1-1, y1, x2, y2, turnCount, 2, clone(gameStateMapCopy))) return true;
+                            }
+                            gameStateMapCopy[y1][x1 - 1] = 1;
+                        }
+                    }
+                    // right
+                    if (direction != 2 && x1 + 1 < horizontalTileNumber + 2) {
+                        if (gameStateMapCopy[y1][x1 + 1] == 0) {
+                            console.log(gameStateMapCopy);
+                            if (direction != 3) {
+                                if (doesConnect(x1+1, y1, x2, y2, turnCount+1, 3, clone(gameStateMapCopy))) return true;
+                            }
+                            else {
+                                if (doesConnect(x1+1, y1, x2, y2, turnCount, 3, clone(gameStateMapCopy))) return true;
+                            }
+                            gameStateMapCopy[y1][x1 + 1] = 1;
+                        }
+                    }
+                }
+                gameStateMapCopy = null;
+                return false;
+            }
+
+            function checkSurroundingConnect(x1, y1, x2, y2, direction, turnCount) {
+
+                if (x1 == x2 && y1 - 1 == y2) {
+                    return ((direction == 0 && turnCount < 3) || turnCount < 2 ) ? true : false;
+                }
+
+                if (x1 == x2 && y1 + 1 == y2) {
+                    return ((direction == 1 && turnCount < 3) || turnCount < 2 ) ? true : false;
+                }
+
+                if (x1 - 1 == x2 && y1 == y2) {
+                    return ((direction == 2 && turnCount < 3) || turnCount < 2 ) ? true : false;
+                }
+
+                if (x1 + 1 == x2 && y1 == y2) {
+                    return ((direction == 3 && turnCount < 3) || turnCount < 2 ) ? true : false;
+                }
+                return false;
+            }
+
+            function expand(array) {
+                var clone = new Array();
+                var emptyArray = new Array();
+                var i, j;
+
+                for (j = 0; j < array[0].length + 2; j++) {
+                    emptyArray.push(0);
+                }
+
+                for (i = 0; i < array.length + 2; i++) {
+                    if (i == 0 || i == array.length + 1) {
+                        clone.push(emptyArray.slice(0));
+                    } else {
+                        var currentRow = array[i-1].slice(0);
+                        currentRow.unshift(0);
+                        currentRow.push(0);
+                        clone.push(currentRow);
+                    }
+                }
+                return clone;
+            }
+
+            function clone(array) {
+                var clone = new Array();
+                for (i = 0; i < array.length; i++) {
+                    clone.push(array[i].slice(0))
+                }
+                return clone;
+            }
+		</script>
+	</body>
+</html>
