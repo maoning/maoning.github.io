@@ -39,7 +39,7 @@ owner:
   bio: "I'm a code monkey, a fantasy/scifi/coffee addict, and a soldering fume maker. This is a blog for like-minded people, and a notepad for myself. Have fun..."
   # email: zourenyuan@gmail.com
   disqus-shortname:
-  twitter: annienmao #username
+  #twitter: annienmao #username
   facebook: #username
   # google:
   #   plus: #username
@@ -52,7 +52,7 @@ owner:
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
   linkedin: http://ca.linkedin.com/in/ningmao
   xing: #username
-  instagram: #username
+  instagram: annienmao
   lastfm: #username
   tumblr: #username
   pinterest: #username
